@@ -98,6 +98,7 @@ nvidia_path='/home/worker/NVIDIA-Linux-x86_64-450.80.02.run'
 bash $nvidia_path
 
 # dkms
+# shellcheck disable=SC2046
 dkms install -m nvidia -v $(ls /usr/src | grep nvidia | awk '{print $NF}' | awk 'BEGIN{FS="-";}{ print $2}')
 
 # setup netplan
@@ -130,7 +131,7 @@ netplan apply
 hostname=$2
 sed -i "s/fil/${hostname}/g" /etc/hosts
 sed -i "s/fil/${hostname}/g" /etc/hostname
-hostname ${hostname}
+hostname "${hostname}"
 
 cat /etc/netplan/00-installer-config.yaml
 cat /etc/hosts

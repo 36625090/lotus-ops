@@ -46,5 +46,7 @@ echo "Change owner & mod"
 chown $currentUser:$currentUser $mountPoint
 
 echo "Setup fstab"
+# shellcheck disable=SC2034
 uuid=$(blkid -o export /dev/md0 | awk 'NR==2 {print}')
-echo "${uid} ${mountPoint} xfs defaults 0 0" >> /etc/fstab
+# shellcheck disable=SC2154
+echo "${uuid} ${mountPoint} xfs defaults 0 0" >> /etc/fstab

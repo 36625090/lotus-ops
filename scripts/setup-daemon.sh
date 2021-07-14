@@ -69,7 +69,7 @@ netplan apply
 hostname=$2
 sed -i "s/fil/${hostname}/g" /etc/hosts
 sed -i "s/fil/${hostname}/g" /etc/hostname
-hostname ${hostname}
+hostname "${hostname}"
 
 cat /etc/netplan/00-installer-config.yaml
 cat /etc/hosts
